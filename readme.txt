@@ -17,7 +17,8 @@ Creating a new branch is quick & simple.
 
 #2023/06/20练习
 greating a new branch   git chechout -b dev = 1:git branch dev		//创建指针dev
-										 	  2:git chechout dev	//选择指针dev
+					      2:git chechout dev	//选择指针dev
 
 										  
 											  
+								
