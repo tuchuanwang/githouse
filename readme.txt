@@ -9,10 +9,11 @@ Git is a distributed version control system.
 Git is free software distributed under the GPL
 Git has a mutable index called stage.
 G/it tracks changes of files.
-Creating a new branch is quick and simple.
+Greating a new branch is quick and simple.
 
 2023/06/20练习
 greating a new branch   git chechout -b dev = 1:git branch dev		//创建指针dev
 										 	  2:git chechout dev	//选择指针dev
 
+										  
 											  
