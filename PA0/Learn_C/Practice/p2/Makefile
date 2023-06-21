@@ -1,6 +1,11 @@
-CFLAGS=-Wall -g
+NUMBER = 2
+
+#CFLAGS=-Wall -g
+ex$(NUMBER): ex$(NUMBER).c
+	gcc  ex$(NUMBER).c -o ex$(NUMBER)
+
 
 .PHONY:clean
 	
 clean:
-	rm - f ex1
+	rm - f ex$(NUMBER)
