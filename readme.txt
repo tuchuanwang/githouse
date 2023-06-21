@@ -19,5 +19,6 @@ Creating a new branch is quick & simple.
 greating a new branch   git chechout -b dev = 1:git branch dev		//创建指针dev
 					      2:git chechout dev	//选择指针dev
 										  
+
 分支管理策略					
 switched to a new branch "dev"
