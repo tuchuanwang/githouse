@@ -16,4 +16,4 @@ obj:
 
 .PHONY:clean
 clean:
-	rm - f ex$(NUMBER)
+	rm -f ex$(NUMBER)
