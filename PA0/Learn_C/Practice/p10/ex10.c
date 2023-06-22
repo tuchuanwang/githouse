@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	int i = 0;
 	argc =10;
 	//argv = "nihao";
-//	argv[2] = "ni hao linux";
+	//argv[2] = "ni hao linux";
 	//go through each string in argv
 	//why am i skipping argv[0]?
 	for(i = 0; i< argc; i++)
@@ -30,6 +30,11 @@ int main(int argc, char *argv[])
 	for(i=0; i< num_states; i++)
 		{
 			printf("state %d: %s\n",i,states[i]);
+			if(i ==1 )
+			{
+				break;
+			}
+
 		}
 
 	return 0;
