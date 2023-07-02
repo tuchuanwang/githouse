@@ -4,14 +4,14 @@
 如何不使用指针来将结构体传给其它函数。
 
 #
-def:
-	struct InitMember
-	{
-	    int first;
-		double second;
-		char* third;
-		float four;
-	};
+	def:
+		struct InitMember
+		{
+		    int first;
+			double second;
+			char* third;
+			float four;
+		};
 
 
 #  c语言结构体初始化的四种方法：
