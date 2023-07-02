@@ -17,6 +17,7 @@ struct Person {
 	int weight;
 };
 
+//类创造函数
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
 	//void *malloc(size_t size) 配所需的内存空间，并返回一个指向它的指针。
