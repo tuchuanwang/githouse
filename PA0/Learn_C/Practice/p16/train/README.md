@@ -5,13 +5,13 @@
 
 #
 	def:
-		struct InitMember
-		{
-		    int first;
-			double second;
-			char* third;
-			float four;
-		};
+	struct InitMember
+	{
+	    int first;
+		double second;
+		char* third;
+		float four;
+	};
 
 
 #  c语言结构体初始化的四种方法：
@@ -20,10 +20,10 @@
 	
 ## 2,定以后逐个赋值：
 	struct InitMember test;
-	test.first = -10;
-	test.second = 3.141590;
-	test.third = "method two";
-	test.four = 0.25;
+		test.first = -10;
+		test.second = 3.141590;
+		test.third = "method two";
+		test.four = 0.25;
 
 ## 3,定义时乱序赋值 (c语言风格)
 	struct InitMember test = {
