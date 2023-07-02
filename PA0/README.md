@@ -16,7 +16,7 @@ Limix C编程一站式学习: http://akaedu.github.io/book/index.html
 
 ### Practive
 
-笨方法学c: http://akaedu.github.io/book/ch03s02.html
+笨方法学c: https://www.cntofu.com/book/25/ex17.md
 
 ## Linux_mit
 	
