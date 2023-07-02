@@ -36,18 +36,20 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 	return who;
 }
 
+//如果定义了创建函数，也要定义一个销毁函数，销毁Person结构体。
 void Person_destroy(struct Person *who)
 {
 	assert(who != NULL);
 
+	//free 函数：void free(void *ptr) 释放malloc所分配的内存空间
 	free(who->name);
 	free(who);
 }
 
-
+//打印函数
 void Person_print(struct Person *who)
 {
-	printf("Name: %s\n", who->name);
+	printf("Name: %s\n", who->name); //(*who).name
 	printf("\tAge: %d \n", who->age);
 	printf("\tHeight: %d \n", who->height);
 	printf("\tWeight: %d \n", who->weight);
