@@ -22,11 +22,11 @@ struct Address {
 };
 
 struct Database	{
-	struct Address rows[MAX_ROWS];
+	struct Address rows[MAX_ROWS];//define rows[100]
 };
 
 struct Connection {
-	FILE *file;		//定义了一个文件？:
+	FILE *file;		//
 	struct Database *db;
 };
 
