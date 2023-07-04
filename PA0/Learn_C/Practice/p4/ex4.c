@@ -7,6 +7,14 @@
 
 #include<stdio.h>
 
+void crash() {
+	char *test = NULL;
+	int i= 0;
+
+	for(i=0; i< 1000; i++){
+		printf("%c", test[i]);
+	}
+}
 /**Waring : this program is wrong on purpose.  **/
 
 int main(int argc, char *argv[])
@@ -16,6 +24,8 @@ int main(int argc, char *argv[])
 
     printf("I am %d years old.\n", age);
     printf("I am %d inches tall.\n", height);
+	
+	crash();
 
     return 0;
 }
