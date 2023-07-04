@@ -52,10 +52,11 @@ Linux中系统调用的错误都存储在errno中，errno由操作系统维护�
 #### 1.fread()
 	函数原型：size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 #### 参数
-ptr-这是这项带有最小先尺寸size \*nmemb字节的内存快的指针.\ 
+ptr-这是这项带有最小先尺寸size \*nmemb字节的内存快的指针.<br />
 size:这是要读取的每个元素的大小，以字节为单位.\ 
-nmemb:这是元素的个数，每个元素的大小为size字节.\ 
-stream:这是这项FILE对象的指针，该GILE对象制定了一个输入流. \
+nmemb:这是元素的个数，每个元素的大小为size字节.\
+stream:这是这项FILE对象的指针，该GILE对象制定了一个输入流.  
+nihao
 
 
 
