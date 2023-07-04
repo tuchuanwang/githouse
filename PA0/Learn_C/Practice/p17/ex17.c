@@ -26,13 +26,13 @@ struct Database	{
 };
 
 struct Connection {
-	FILE *file;		//
+	FILE *file;			//
 	struct Database *db;
 };
 
 void die(const char *message)
 {
-	if(errno)	{
+	if(errno)	{      //errno 只有0表示成功，其他的数字都表示出错（1-133
 		perror(message);
 	}
 	else	{
@@ -63,18 +63,18 @@ struct Connection *Database_open(const char *filename, char mode)
 
 	if(mode == 'c')
 	{
-		conn->file = fopen(filename, "w");
+		conn->file = fopen(filename, "w"); // 创建一个用于写入的空文件，如果文件名称与一存在的文件相同，则会删除一有的文件的内容，文件被视为一个新文件
 	}
 	else
 	{
-		conn->file = fopen(filename, "r+");
+		conn->file = fopen(filename, "r+"); //r+ 打开一个用于更新的文件，可读取也可写入，该文件必须存在
 
 		if(conn->file){
 			Database_load(conn);
 		}
 	}
 	
-	if(!conn->file) die("Failed to poen the file");
+	if(!conn->file) die("Failed to open the file");
 	
 	return conn;
 }
@@ -83,20 +83,21 @@ void Database_close(struct Connection *conn)
 {
 	if(conn)
 	{
-		if(conn->file) fclose(conn->file);
-		if(conn->db) free(conn->db);
+		if(conn->file) fclose(conn->file);	//关闭 (*conn).file
+		if(conn->db) free(conn->db);//释放内存	
 		free(conn);
 	}
 }
 
 void Database_write(struct Connection *conn)
 {
-	rewind(conn->file);
+	rewind(conn->file);	//rewind函数 设置文件位置为给定流stream的文件的开头,类似于vim中的‘0’
 
 	int rc = fwrite(conn->db, sizeof(struct Database), 1, conn->file);
 	if(rc !=1) die("Failed to write database.");
 
-	rc = fflush(conn->file);
+	rc = fflush(conn->file); // fflush更新缓存区 用于刷新流的缓冲区，以确保缓冲区中的数据被写入到文件中。它的函数原型如下.int fflush(FILE *stream);
+							 //
 	if(rc == -1) die("Cannot flush database.");
 }
 
@@ -108,7 +109,8 @@ void Database_create(struct Connection *conn)
 		//make a prototype to initialize it
 		struct Address addr = {.id = i, .set = 0};
 		//then just assign it
-		conn->db->rows[i] = addr;
+		conn->db->rows[i] = addr; // 读取conn中的db中的rows的第i个元素 
+								  // conn->db->row+i
 	}
 }
 
@@ -119,11 +121,11 @@ void Database_set(struct Connection *conn, int id, const char *name, const char 
 
 	addr->set = 1;
 	// WARINGl bug,read the "How To Break IT" and fix this
-	char *res = strncpy(addr->name, name, MAX_DATA);
+	char *res = strncpy(addr->name, name, MAX_DATA);// 将name复制到addr->name中 MAX_DATA次
 	//demonstrate the strncpy bug
 	if(!res) die("Name copy failes");
 
-	res = strncpy(addr->email, email, MAX_DATA);
+	res = strncpy(addr->email, email, MAX_DATA); // 字符串用*res, 整数用res
 	if(!res) die("Email copy failed");
 }
 
@@ -134,7 +136,7 @@ void Database_get(struct Connection *conn, int id)
 	if(addr->set){
 		Address_print(addr);
 	}else{
-		die("ID si not set");
+		die("ID is not set");
 	}
 }
 
@@ -168,8 +170,8 @@ int main(int argc, char *argv[])
 	struct Connection *conn = Database_open(filename, action);
 	int id = 0;
 
-	if(argc >3) id = atoi(argv[3]);
-	if(id >= MAX_ROWS) die("There si not that many records.");
+	if(argc >3) id = atoi(argv[3]);// atoi() 把参数所指向的字符串转换为一个整数
+	if(id >= MAX_ROWS) die("There is not that many records.");
 
 	switch(action){
 		case 'c':
@@ -184,7 +186,14 @@ int main(int argc, char *argv[])
 			break;
 
 		case 's':
-			if(argc !=6) die("Need id to delete");
+			if(argc !=6) die("Need id, name, email to set");
+
+			Database_delete(conn, id);
+			Database_write(conn);
+			break;
+
+		case 'd':
+			if(argc !=4) die("Need id to delet");
 
 			Database_delete(conn, id);
 			Database_write(conn);
