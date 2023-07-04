@@ -1,11 +1,12 @@
 NUMBER = 2
 
-#CFLAGS=-Wall -g
-ex$(NUMBER): ex$(NUMBER).c
-	gcc  ex$(NUMBER).c -o ex$(NUMBER)
+CFLAGS=-Wall -g
 
-
+all: clean ex1
+	echo"niaho"
 .PHONY:clean
 	
 clean:
-	rm - f ex$(NUMBER)
+	rm -f ex$(NUMBER)a
+
+
