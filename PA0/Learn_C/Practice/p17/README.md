@@ -1,6 +1,6 @@
 练习17：堆和栈的内存分配
 
-#函数的解析： 	
+# 函数的解析： 	
 	struct Address rows[MAX_ROWS]
 定长结构体
 
