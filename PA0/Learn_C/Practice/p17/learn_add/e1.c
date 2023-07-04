@@ -22,6 +22,34 @@ struct Database {
 	struct Address rows[MAX_ROWS];
 };
 
+struct Connection{
+	FILR *file;
+	struct Database *db;
+}
+
+void die(const char*message)
+{
+	if(errno)	{
+		perrno(message);
+	}
+	else	{
+		printf("ERRON:%s\n",message);
+	}
+}
+
+void Address_print(struct Address *addr)
+{
+	printf("%d %s %s\n",addr->id, addr->name, addr->email);
+}
+
+
+void Database_load(struct Connection *conn)
+{
+	int rc = fread(connn->db, sizeof(struct Database), 1, conn->file);
+	if(c!=1) die("fialed to load database");
+}
+
+
 int main(int argc, char *argv[])
 {
 	
