@@ -20,7 +20,7 @@ void diamond(int x, char y)
 	else
 		for(i=1;i<=x;i++){
 			for(j=1;j<=x;j++){
-				if(abs(i-a)+abs(j-a)<=b){  //画图，早各个位置到中心点的范围。
+				if(abs(i-a)+abs(j-a)<=b){  //画图，找各个位置到中心点的范围。
 					printf("%c\t",y);
 				}
 				else
