@@ -104,13 +104,42 @@ struct fraction_struct sub_fraction(struct fraction_struct a, struct fraction_st
 	return	z;
 }
 
+//c
+struct fraction_struct mul_fraction(struct fraction_struct a, struct fraction_struct b)
+{
+	struct fraction_struct z;
+	z.y=a.y*b.y;
+	z.x=a.x*b.x;
+
+	return z;
+}
+
+//
+struct fraction_struct div_fraction(struct fraction_struct a, struct fraction_struct b)
+{
+	struct fraction_struct z;
+	if(b.y !=0)
+	{
+		z.y=a.y*b.x;
+		z.x=a.x*b.y;
+	}
+	else{
+		z.y=0;
+		z.x=1;
+	}
+	
+	return z;
+}
+
 int main(int argc, char *argv[])
 {
 	struct fraction_struct a = {-1,8};
-	struct fraction_struct b = {7,8};
+	struct fraction_struct b = {7,3};
 	print(a);
 	print(b);
 	print(add_fraction(a,b));
 	print(sub_fraction(a,b));
+	print(mul_fraction(a,b));
+	print(div_fraction(a,b));
 	return 0;
 }
